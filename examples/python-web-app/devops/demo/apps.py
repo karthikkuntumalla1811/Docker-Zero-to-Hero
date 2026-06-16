@@ -1,6 +1,13 @@
-from django.apps import AppConfig
+from flask import Flask
 
+app = Flask(__name__)
 
-class DemoConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'demo'
+@app.route("/")
+def home():
+    return "Hello from Docker!"
+
+@app.route("/demo")
+def demo():
+    return "Demo Page"
+
+app.run(host="0.0.0.0", port=8000)
